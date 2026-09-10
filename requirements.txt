@@ -1,0 +1,10 @@
+numpy
+pandas
+scikit-learn
+lightgbm
+opencv-python
+streamlit
+plotly
+matplotlib
+anthropic
+python-dotenv

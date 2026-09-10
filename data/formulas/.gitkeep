@@ -1,0 +1,5 @@
+# Placeholder so this empty folder is tracked by git.
+# Formula sheets, calibration notes, and derivations from the
+# formulas/research teammate go here (growth kinetics, OUR/CER/RQ
+# formulas, foam ODE constants, gas thresholds, etc.) — referenced
+# directly by the simulator/ modules.

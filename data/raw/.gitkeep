@@ -1,0 +1,5 @@
+# Placeholder so this empty folder is tracked by git.
+# Put reference public datasets here (Kaggle Fermentation Optimization
+# Dataset, AgSTAR Livestock Anaerobic Digester Database, Mendeley
+# xylose biogas dataset) — used to calibrate the simulator's formulas
+# against real data.

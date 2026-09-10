@@ -1,0 +1,4 @@
+# Placeholder so this empty folder is tracked by git.
+# Generated simulated batch logs (CSV) go here — output of the
+# simulator, used as training data for the LightGBM models in
+# ml_core/. These CSVs are gitignored since they're regenerable.

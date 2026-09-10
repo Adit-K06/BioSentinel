@@ -1,0 +1,27 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environments
+.env
+venv/
+env/
+.venv/
+
+# Model artifacts (regenerate instead of committing large binaries)
+ml_core/models/*.pkl
+ml_core/models/*.txt
+!ml_core/models/.gitkeep
+
+# Data (keep small reference CSVs, not huge generated logs)
+data/synthetic/*.csv
+!data/synthetic/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/

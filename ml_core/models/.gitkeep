@@ -1,0 +1,4 @@
+# Placeholder so this empty folder is tracked by git.
+# Trained model files (.pkl / .txt from LightGBM) get saved here by
+# train_foam_model.py and train_gas_model.py. These are gitignored
+# (see .gitignore) since they're regenerable binaries, not source code.
