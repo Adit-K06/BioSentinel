@@ -94,3 +94,43 @@ REGIME_OVERRIDES: Dict[str, Dict[str, Any]] = {
         "X_cont0":      0.001,  # g/L initial contaminant inoculum
     },
 }
+
+# ---------------------------------------------------------------------------
+# Recoverability Engine constants
+# Source: Extended_Bioprocess_Model_Equations.pdf  (Equations 14–15)
+# ---------------------------------------------------------------------------
+
+STRESS_PARAMS = {
+    # --- Stress sensitivity coefficients (Eq. 14) ---
+    # λ = k_stress * |pH_opt - pH(t)| + k_O2 * |C_crit - CL|
+    #
+    # The PDF specifies these as tunable constants; the numeric values below
+    # are HACKATHON IMPLEMENTATION ASSUMPTIONS — not biologically validated.
+    "k_stress": 1.0,       # h⁻¹  stress weight for pH deviation
+    "k_O2":     200.0,     # h⁻¹·(g/L)⁻¹  stress weight for DO deviation
+    "pH_opt":   7.0,       # dimensionless  optimal pH (assumption: neutral)
+    # C_crit is the nominal healthy operating DO (≈ 7 mg/L = 0.007 g/L).
+    # Stress = k_O2 * |C_crit - CL|, so stress ≈ 0 at healthy DO and rises
+    # when DO sags below nominal during a fault.
+    # HACKATHON IMPLEMENTATION ASSUMPTION (set to match simulator healthy DO).
+    "C_crit":   0.0070,    # g/L  nominal healthy dissolved oxygen target
+
+    # --- Recoverability thresholds (Eq. 15) ---
+    # R(t) = exp(-∫λ dt) ∈ (0, 1]
+    #
+    # PNR: Point of No Return — R drops below this → batch deemed unrecoverable.
+    # Chosen as 0.20 (20 %) for the demo.
+    # HACKATHON IMPLEMENTATION ASSUMPTION.
+    "R_pnr":    0.20,
+
+    # DIW: Decision Intervention Window — hours remaining before R hits R_pnr
+    # given the current instantaneous stress rate.
+    # HACKATHON IMPLEMENTATION ASSUMPTION: linear extrapolation of stress.
+    "R_diw_floor": 0.0,    # hours  minimum DIW clamp (cannot be negative)
+
+    # --- Cost-of-Delay parameters ---
+    # Cost-of-Delay(Δt) = batch_value * (1 - R(t + Δt)) - intervention_cost
+    # HACKATHON IMPLEMENTATION ASSUMPTION (monetary model).
+    "batch_value":        10_000.0,  # USD  expected revenue per successful batch
+    "intervention_cost":    500.0,   # USD  cost of a corrective intervention
+}

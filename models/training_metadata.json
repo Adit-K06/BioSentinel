@@ -1,0 +1,14 @@
+{
+  "accuracy": 0.945347,
+  "macro_f1": 0.9464,
+  "n_train_rows": 57600,
+  "n_val_rows": 14400,
+  "n_feature_cols": 184,
+  "n_estimators_used": 172,
+  "classes": [
+    "Healthy",
+    "kLa_Limitation",
+    "Substrate_Overfeeding",
+    "Contamination"
+  ]
+}
